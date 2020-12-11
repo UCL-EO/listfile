@@ -34,7 +34,7 @@ __date__      = "28 Aug 2020"
 __copyright__ = "Copyright 2020 P. Lewis"
 __license__   = "MIT License"
 
-class Listfile(list):
+class ListPath(list):
     '''
     listfile utilities class based on list
 
@@ -80,7 +80,7 @@ class Listfile(list):
             listfile = self.remove_duplicates(listfile)
             
         # set list 
-        super(Listfile, self).__init__(listfile) 
+        super(ListPath, self).__init__(listfile) 
         # get read/write permissions 
         self.list_info()
     
@@ -242,11 +242,11 @@ class Listfile(list):
     def remove_duplicates(self,listfile):
         '''
         remove duplicates in self and return
-        new Listfile
+        new ListPath
         '''
         if len(listfile) == 0:
             return listfile
-        return Listfile(np.unique(np.array(listfile,dtype=np.object)).ravel())
+        return ListPath(np.unique(np.array(listfile,dtype=np.object)).ravel())
     
     def report(self,stderr=sys.stderr):
         print(f'info: read  : {self.read}',file=stderr)
@@ -263,7 +263,7 @@ def test1():
     '''
     print(msg)
     xin = [['.',['..'],'a b',['.','demo.ipynb',['notebooks/demo.ipynb']]],'hello']
-    xout = Listfile(xin)
+    xout = ListPath(xin)
     print(f'{xin} -> {xout}')
     xout.report()
     
@@ -274,7 +274,7 @@ def test2():
     '''
     print(msg)
     xin = 'hello world'
-    xout = Listfile(xin)
+    xout = ListPath(xin)
     print(f'{xin} -> {xout}')
     xout.report()
     
@@ -284,7 +284,7 @@ def test3():
     '''
     print(msg)
     xin = ['hello world',['.','./hello world'],'.']
-    xout = Listfile(xin,unique=True)
+    xout = ListPath(xin,unique=True)
     print(f'{xin} -> {xout}')
     xout.report()
 
@@ -294,7 +294,7 @@ def test4():
     '''
     print(msg)
     xin = ['/tmp','/doesnt exist/x']
-    xout = Listfile(xin,name='tester.dat')
+    xout = ListPath(xin,name='tester.dat')
     print(f'{xin} -> {xout}')
     xout.report()
 

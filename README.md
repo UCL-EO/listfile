@@ -1,5 +1,5 @@
 # listfile
-Listfile class for simply dealing with a list of Path objects
+ListPath class for simply dealing with a list of Path objects
 
 ### Run a test with ./listfile.py
     
@@ -7,7 +7,7 @@ Test for a mixed bag of directories and files
 The result should be a flattened list. Note that (empty) the directory `notebooks` will be generated.
 
     % xin = [['.',['..'],'a b',['.','demo.ipynb',['notebooks/demo.ipynb']]],'hello']
-    % xout = Listfile(xin)
+    % xout = ListPath(xin)
     
     % print(f'{xin} ->\n {xout}')
     [['.', ['..'], 'a b', ['.', 'demo.ipynb', ['notebooks/demo.ipynb']]], 'hello'] ->
@@ -24,7 +24,7 @@ Give it a string. We want this maintained as
 a string, not split into chars (as with normal list)
 
     % xin = 'hello world'
-    % xout = Listfile(xin)
+    % xout = ListPath(xin)
     % print(f'{xin} -> {xout}')
     hello world -> [PosixPath('/Users/plewis/Documents/GitHub/listfile/hello world')]
     
@@ -38,7 +38,7 @@ a string, not split into chars (as with normal list)
 Remove duplicates test
     
     % xin = ['hello world',['.','./hello world'],'.']
-    % xout = Listfile(xin,unique=True)
+    % xout = ListPath(xin,unique=True)
     % print(f'{xin} ->\n {xout}')
     ['hello world', ['.', './hello world'], '.'] ->
     [PosixPath('/Users/plewis/Documents/GitHub/listfile'), PosixPath('/Users/plewis/Documents/GitHub/listfile/hello world')]
@@ -53,7 +53,7 @@ Remove duplicates test
 Test write permission and use of name= kwarg
 
     % xin = ['/tmp','/doesnt exist/x']
-    % xout = Listfile(xin,name='tester.dat')
+    % xout = ListPath(xin,name='tester.dat')
 
     % print(f'{xin} ->\n {xout}')
     ['/tmp', '/doesnt exist/x'] ->
